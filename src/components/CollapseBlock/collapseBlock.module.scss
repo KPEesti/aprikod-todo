@@ -1,0 +1,27 @@
+.collapseBlock {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__body {
+    padding-left: 10px;
+
+    &_shown {
+      display: block;
+    }
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    margin-right: 10px;
+  }
+}
