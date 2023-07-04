@@ -1,5 +1,5 @@
-import {Todo} from "../../models/todo";
-import TodoItem from "../TodoItem";
+import {Todo} from "../../models/ITodo";
+import {TodoItem} from "../TodoItem";
 import CollapseBlock from "../CollapseBlock";
 
 interface NestingResolverProps {

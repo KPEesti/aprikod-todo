@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './collapseBlock.module.scss';
-import {Todo} from "../../models/todo";
-import TodoItem from "../TodoItem";
+import {Todo} from "../../models/ITodo";
+import {TodoItem} from "../TodoItem";
 import {useCollapse} from "../../hooks/useCollapse";
 import {NestingResolver} from "../NestingResolver";
 
@@ -29,7 +29,7 @@ export default function CollapseBlock({task}: CollapseBlockProps) {
                     className={styles.collapseBlock__body}
                 >
                     {task.subTasks && task.subTasks.map(item => {
-                            return <NestingResolver task={item}/>
+                            return <NestingResolver task={item} key={item.id}/>
                         }
                     )}
                 </div>
