@@ -1,7 +1,7 @@
 import {v4 as uuidv4} from 'uuid';
 import {makeAutoObservable} from "mobx";
 
-export interface ITodo {
+interface ITodo {
     id?: string;
     title: string;
     description: string;
@@ -32,13 +32,38 @@ export class Todo implements ITodo {
                 return new Todo(task);
             });
         }
+
         makeAutoObservable(this);
     }
 
     changeStatus(newStatus: boolean) {
         this.completed = !newStatus;
-        if(this.subTasks) {
+        if (this.subTasks) {
             this.subTasks.forEach(task => task.changeStatus(newStatus));
+        }
+    }
+
+    changeTask({title, description}: { title?: string, description?: string }) {
+        if (title !== undefined) {
+            this.title = title;
+        }
+
+        if (description !== undefined) {
+            this.description = description;
+        }
+    }
+
+    addSubTask(task: Todo) {
+        if (!this.subTasks) {
+            this.subTasks = [task]
+        } else {
+            this.subTasks?.push(task);
+        }
+    }
+
+    deleteSubTask(taskID: string) {
+        if (this.subTasks) {
+            this.subTasks = this.subTasks.filter((task) => task.id !== taskID);
         }
     }
 }
