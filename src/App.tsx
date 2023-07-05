@@ -3,6 +3,7 @@ import './App.css';
 import {Todo} from "./models/Todo";
 import {TodoList} from "./components/TodoList";
 import {Store} from "./models/Store";
+import {TodoDetail} from "./components/TodoDetail";
 
 export const StoreContext = createContext<Store>(new Store([]));
 
@@ -75,7 +76,7 @@ function App() {
         <StoreContext.Provider value={store}>
             <div className="App">
                 <TodoList/>
-
+                <TodoDetail/>
             </div>
         </StoreContext.Provider>
     );

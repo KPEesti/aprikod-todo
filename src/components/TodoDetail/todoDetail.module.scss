@@ -1,0 +1,30 @@
+.todoDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__title {
+    margin: 0 0 .5rem;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 3rem;
+  }
+
+  &__description {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2rem;
+  }
+
+  &__divider {
+    width: 100%;
+    border-top: 1px solid #8d8d8d;
+    margin: 0;
+  }
+
+  &__detailBlock {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
