@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './collapseBlock.module.scss';
-import {Todo} from "../../models/ITodo";
+import {Todo} from "../../models/Todo";
 import {TodoItem} from "../TodoItem";
 import {useCollapse} from "../../hooks/useCollapse";
 import {NestingResolver} from "../NestingResolver";

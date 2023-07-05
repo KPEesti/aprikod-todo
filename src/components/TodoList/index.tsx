@@ -1,6 +1,6 @@
 import {NestingResolver} from "../NestingResolver";
 import React from "react";
-import {Todo} from "../../models/ITodo";
+import {Todo} from "../../models/Todo";
 
 interface TodoListProps {
     tasks: Array<Todo>

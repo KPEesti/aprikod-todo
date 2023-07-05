@@ -1,4 +1,4 @@
-import {Todo} from "../../models/ITodo";
+import {Todo} from "../../models/Todo";
 import {TodoItem} from "../TodoItem";
 import CollapseBlock from "../CollapseBlock";
 

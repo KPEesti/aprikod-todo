@@ -1,5 +1,5 @@
 import styles from './todoItem.module.scss';
-import {Todo} from "../../models/ITodo";
+import {Todo} from "../../models/Todo";
 import {BaseSyntheticEvent} from "react";
 import {observer} from "mobx-react";
 

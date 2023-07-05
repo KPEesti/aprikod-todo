@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Todo} from "./models/ITodo";
+import {Todo} from "./models/Todo";
 import {TodoList} from "./components/TodoList";
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
         },
         {
             id: '7',
-            title: 'Sub task',
+            title: 'Task',
             description: 'description',
             subTasks: null,
             completed: false,
