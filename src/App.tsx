@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import './App.css';
 import {Todo} from "./models/Todo";
 import {TodoList} from "./components/TodoList";
+import {Store} from "./models/Store";
+
+export const StoreContext = createContext<Store>(new Store([]));
 
 function App() {
     const tasks: Array<Todo> = [
@@ -66,10 +69,15 @@ function App() {
         }
     ].map(task => new Todo(task));
 
+    const store = new Store(tasks);
+
     return (
-        <div className="App">
-            <TodoList tasks={tasks}/>
-        </div>
+        <StoreContext.Provider value={store}>
+            <div className="App">
+                <TodoList/>
+
+            </div>
+        </StoreContext.Provider>
     );
 }
 

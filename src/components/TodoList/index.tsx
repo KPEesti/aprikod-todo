@@ -1,16 +1,14 @@
 import {NestingResolver} from "../NestingResolver";
-import React from "react";
-import {Todo} from "../../models/Todo";
+import React, {useContext} from "react";
+import {StoreContext} from "../../App";
 
-interface TodoListProps {
-    tasks: Array<Todo>
-}
+export const TodoList = () => {
 
-export const TodoList = ({tasks}: TodoListProps) => {
+    const store = useContext(StoreContext);
     return (
         <div>
             {
-                tasks.map(task => <NestingResolver task={task} key={task.id}/>)
+                store.tasks.map(task => <NestingResolver task={task} key={task.id}/>)
             }
         </div>
     );
