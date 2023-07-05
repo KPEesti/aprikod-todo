@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Todo} from "./models/ITodo";
-import {NestingResolver} from "./components/NestingResolver";
+import {TodoList} from "./components/TodoList";
 
 function App() {
     const tasks: Array<Todo> = [
@@ -68,9 +68,7 @@ function App() {
 
     return (
         <div className="App">
-            {
-                tasks.map(task => <NestingResolver task={task} key={task.id}/>)
-            }
+            <TodoList tasks={tasks}/>
         </div>
     );
 }

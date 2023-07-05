@@ -1,5 +1,7 @@
 .App {
-  width: 80%;
-  margin: auto;
+  width: 92%;
+  margin: 30px auto auto;
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
