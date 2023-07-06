@@ -16,10 +16,10 @@ export default function CollapseBlock({task}: CollapseBlockProps) {
     return (
         <div className={styles.collapseBlock}>
             <div
-                onClick={handleCollapse}
                 className={styles.collapseBlock__header}
             >
                 <img className={styles.collapseBlock__arrow}
+                     onClick={handleCollapse}
                      src={!collapsed ? "/images/upArrow.svg" : "/images/downArrow.svg"} height={'20px'} alt=""/>
                 <TodoItem todo={task}/>
             </div>
