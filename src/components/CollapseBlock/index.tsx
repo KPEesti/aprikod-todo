@@ -4,13 +4,14 @@ import {Todo} from "../../models/Todo";
 import {TodoItem} from "../TodoItem";
 import {useCollapse} from "../../hooks/useCollapse";
 import {NestingResolver} from "../NestingResolver";
+import {observer} from "mobx-react";
 
 interface CollapseBlockProps {
     task: Todo
 }
 
 
-export default function CollapseBlock({task}: CollapseBlockProps) {
+export const CollapseBlock = observer(({task}: CollapseBlockProps) => {
     const {collapsed, handleCollapse} = useCollapse(true);
 
     return (
@@ -36,4 +37,4 @@ export default function CollapseBlock({task}: CollapseBlockProps) {
             }
         </div>
     );
-}
+});

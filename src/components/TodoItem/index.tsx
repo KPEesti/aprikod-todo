@@ -24,8 +24,8 @@ export const TodoItem = observer(({todo}: TodoProps) => {
 
     return (
         <div className={styles.todoItem}>
-            <h3 className={styles.todoItem__title} onClick={handleClick}>{todo.title}</h3>
-            <input type="checkbox" checked={todo.completed} onChange={(event) => handleCheck(event)}/>
+            <h3 className={styles.todoItem__title}  onClick={handleClick}>{todo.title}</h3>
+            <input type="checkbox" checked={todo.completed} onChange={handleCheck}/>
         </div>
     );
 });

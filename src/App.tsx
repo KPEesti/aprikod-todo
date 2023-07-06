@@ -20,11 +20,9 @@ function App() {
                     title: 'Sub task',
                     description: 'description',
                     subTasks: null,
-                    creationDate: '21.12.2022',
                     completed: true,
                 }
-            ],
-            creationDate: '21.12.2022'
+            ]
         },
         {
             id: '3',
@@ -44,7 +42,6 @@ function App() {
                             description: 'description',
                             subTasks: null,
                             completed: false,
-                            creationDate: '21.12.2022'
                         },
                         {
                             id: '6',
@@ -52,21 +49,17 @@ function App() {
                             description: 'description',
                             subTasks: null,
                             completed: false,
-                            creationDate: '21.12.2022'
                         }
-                    ],
-                    creationDate: '21.12.2022'
+                    ]
                 }
-            ],
-            creationDate: '21.12.2022'
+            ]
         },
         {
             id: '7',
             title: 'Task',
             description: 'description',
             subTasks: null,
-            completed: false,
-            creationDate: '21.12.2022'
+            completed: false
         }
     ].map(task => new Todo(task));
 
@@ -74,7 +67,7 @@ function App() {
 
     return (
         <StoreContext.Provider value={store}>
-            <div className="App">
+            <div className="App" id="App">
                 <TodoList/>
                 <TodoDetail/>
             </div>
