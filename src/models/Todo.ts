@@ -7,23 +7,22 @@ interface ITodo {
     description: string;
     completed: boolean;
     subTasks: ITodo[] | null;
-    creationDate: string;
 }
 
 export class Todo implements ITodo {
     id: string;
     title: string;
     description: string;
-    creationDate: string;
     completed: boolean;
     subTasks: Array<Todo> | null;
+    creationDate: Date;
 
-    constructor({title, description, subTasks, creationDate, completed}: ITodo) {
+    constructor({title, description, subTasks, completed}: ITodo) {
         this.id = uuidv4();
         this.title = title;
         this.description = description;
         this.completed = completed;
-        this.creationDate = creationDate;
+        this.creationDate = new Date(Date.now());
 
         if (!subTasks) {
             this.subTasks = null;
@@ -53,7 +52,7 @@ export class Todo implements ITodo {
         }
     }
 
-    addSubTask(task: Todo) {
+    addTask(task: Todo) {
         if (!this.subTasks) {
             this.subTasks = [task]
         } else {
@@ -61,9 +60,12 @@ export class Todo implements ITodo {
         }
     }
 
-    deleteSubTask(taskID: string) {
+    deleteSubTask(taskID: string): void {
         if (this.subTasks) {
-            this.subTasks = this.subTasks.filter((task) => task.id !== taskID);
+            this.subTasks = this.subTasks.filter((task) => {
+                task.deleteSubTask(taskID);
+                return task.id !== taskID;
+            });
         }
     }
 }
