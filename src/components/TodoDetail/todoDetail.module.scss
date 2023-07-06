@@ -3,6 +3,19 @@
   flex-direction: column;
   align-items: flex-start;
 
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    height: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
   &__title {
     margin: 0 0 .5rem;
     font-size: 28px;
