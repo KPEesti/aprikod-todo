@@ -4,11 +4,13 @@ import React, {useContext, useState} from "react";
 import {StoreContext} from "../../App";
 import {Modal} from "../../UIKit/Modal";
 import {TaskCreation} from "../TaskCreation";
+import {TaskEditing} from "../TaskEditing";
 
 export const TodoDetail = observer(() => {
     const store = useContext(StoreContext);
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
 
     const handleDeleteTask = () => {
         console.log('Handle Delete');
@@ -29,8 +31,9 @@ export const TodoDetail = observer(() => {
             <div className={styles.todoDetail__header}>
                 <h2 className={styles.todoDetail__title}>{store.currentTask?.title}</h2>
                 <div>
-                    <img className={styles.todoDetail__icons} src="/images/edit.svg" height="25px" alt=""/>
-                    <img className={styles.todoDetail__icons} onClick={handleDeleteTask} src="/images/trash.svg" height="25px" alt=""/>
+                    <img className={styles.todoDetail__icons} onClick={() => setIsEditModalOpen(true)} src="/images/edit.svg" height="25px" alt=""/>
+                    <img className={styles.todoDetail__icons} onClick={handleDeleteTask} src="/images/trash.svg"
+                         height="25px" alt=""/>
                 </div>
             </div>
             <hr className={styles.todoDetail__divider}/>
@@ -43,6 +46,10 @@ export const TodoDetail = observer(() => {
 
             <Modal isOpened={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <TaskCreation ctx={store.currentTask} onClose={() => setIsModalOpen(false)}/>
+            </Modal>
+
+            <Modal isOpened={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
+                <TaskEditing ctx={store.currentTask} onClose={() => setIsEditModalOpen(false)}/>
             </Modal>
         </div>
     );
