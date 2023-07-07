@@ -1,9 +1,10 @@
 import {useState} from "react";
 import {Todo} from "../../models/Todo";
 import styles from "./taskCreation.module.scss";
+import {Store} from "../../models/Store";
 
 interface TaskCreationProps {
-    ctx: any;
+    ctx: Todo | Store;
     onClose: () => void;
 }
 

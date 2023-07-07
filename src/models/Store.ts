@@ -1,6 +1,6 @@
 import {Todo} from "./Todo";
 import {makeAutoObservable} from "mobx";
-import {findTaskByID} from "../helpers/findTodo";
+import {findTaskByID, searchTaskByTitle} from "../helpers/findTodo";
 
 export class Store {
     tasks: Array<Todo> = [];
@@ -15,13 +15,15 @@ export class Store {
         this.currentTask = task;
     }
 
+    searchTasks(search: string): Array<Todo> {
+        return searchTaskByTitle(this.tasks, search);
+    }
+
     getTaskByID(id: string): Todo | null {
         return findTaskByID(this.tasks, id);
     }
 
     addTask(task: Todo) {
-        console.log(task);
-        console.log(this);
         if (!this.tasks) {
             this.tasks = [task];
         } else {
