@@ -27,22 +27,25 @@ export const TodoDetail = observer(() => {
     }
 
     return (
-        <div className={styles.todoDetail}>
-            <div className={styles.todoDetail__header}>
-                <h2 className={styles.todoDetail__title}>{store.currentTask?.title}</h2>
-                <div>
-                    <img className={styles.todoDetail__icons} onClick={() => setIsEditModalOpen(true)} src="/images/edit.svg" height="25px" alt=""/>
-                    <img className={styles.todoDetail__icons} onClick={handleDeleteTask} src="/images/trash.svg"
-                         height="25px" alt=""/>
+        <>
+            <div className={styles.todoDetail}>
+                <div className={styles.todoDetail__header}>
+                    <h2 className={styles.todoDetail__title}>{store.currentTask?.title}</h2>
+                    <div>
+                        <button className={styles.todoDetail__button} onClick={() => setIsModalOpen(true)}>Добавить подзадачу</button>
+                        <img className={styles.todoDetail__icons} onClick={() => setIsEditModalOpen(true)}
+                             src="/images/edit.svg" height="25px" alt=""/>
+                        <img className={styles.todoDetail__icons} onClick={handleDeleteTask} src="/images/trash.svg"
+                             height="25px" alt=""/>
+                    </div>
+                </div>
+                <hr className={styles.todoDetail__divider}/>
+                <p className={styles.todoDetail__description}>{store.currentTask?.description}</p>
+                <div className={styles.todoDetail__detailBlock}>
+                    <span>Статус: {store.currentTask.completed ? "Завершена" : "Не завершена"}</span>
+                    <span>Дата Создания: {store.currentTask?.creationDate.toUTCString()}</span>
                 </div>
             </div>
-            <hr className={styles.todoDetail__divider}/>
-            <p className={styles.todoDetail__description}>{store.currentTask?.description}</p>
-            <div className={styles.todoDetail__detailBlock}>
-                <span>Статус: {store.currentTask.completed ? "Завершена" : "Не завершена"}</span>
-                <span>Дата Создания: {store.currentTask?.creationDate.toUTCString()}</span>
-            </div>
-            <button onClick={() => setIsModalOpen(true)}>Добавить подзадачу</button>
 
             <Modal isOpened={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <TaskCreation ctx={store.currentTask} onClose={() => setIsModalOpen(false)}/>
@@ -51,6 +54,6 @@ export const TodoDetail = observer(() => {
             <Modal isOpened={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
                 <TaskEditing ctx={store.currentTask} onClose={() => setIsEditModalOpen(false)}/>
             </Modal>
-        </div>
+        </>
     );
 });
