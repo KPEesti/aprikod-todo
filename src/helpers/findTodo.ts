@@ -20,7 +20,7 @@ export function searchTaskByTitle(tasks: Array<Todo>, search: string): Array<Tod
     const result = new Array<Todo>();
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        if (task.title.includes(search) || (task.subTasks && searchSubTasks(task.subTasks, search))) {
+        if (task.title.toLowerCase().includes(search.toLowerCase()) || (task.subTasks && searchSubTasks(task.subTasks, search))) {
             result.push(task);
         }
     }
@@ -30,7 +30,7 @@ export function searchTaskByTitle(tasks: Array<Todo>, search: string): Array<Tod
 function searchSubTasks(tasks: Array<Todo>, search: string): boolean {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        if (task.title.includes(search) || (task.subTasks && searchSubTasks(task.subTasks, search))) {
+        if (task.title.toLowerCase().includes(search.toLowerCase()) || (task.subTasks && searchSubTasks(task.subTasks, search))) {
             return true;
         }
     }

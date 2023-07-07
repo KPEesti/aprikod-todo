@@ -4,6 +4,7 @@ import {StoreContext} from "../../App";
 import {observer} from "mobx-react";
 import {Modal} from "../../UIKit/Modal";
 import {TaskCreation} from "../TaskCreation";
+import styles from "./todoList.module.scss"
 
 export const TodoList = observer(() => {
     const store = useContext(StoreContext);
@@ -23,13 +24,16 @@ const ListHeader = () => {
     const store = useContext(StoreContext);
 
     return (
-        <div>
-            <input type="text" onChange={(e) => store.searchTasks(e.target.value)}/>
-            <button onClick={() => setIsModalOpen(true)}>Добавить задачу</button>
+        <>
+            <div className={styles.header}>
+                <input className={styles.header__search} type="text" placeholder="Поиск..."
+                       onChange={(e) => store.searchTasks(e.target.value)}/>
+                <button className={styles.header__button} onClick={() => setIsModalOpen(true)}>Добавить задачу</button>
+            </div>
 
             <Modal isOpened={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <TaskCreation ctx={store} onClose={() => setIsModalOpen(false)}/>
             </Modal>
-        </div>
+        </>
     );
 }
