@@ -2,8 +2,8 @@ import {observer} from "mobx-react";
 import styles from "./todoDetail.module.scss";
 import React, {useContext, useState} from "react";
 import {StoreContext} from "../../App";
-import {createPortal} from "react-dom";
-import {TaskModal} from "../TaskModal";
+import {Modal} from "../../UIKit/Modal";
+import {TaskCreation} from "../TaskCreation";
 
 export const TodoDetail = observer(() => {
     const store = useContext(StoreContext);
@@ -40,7 +40,10 @@ export const TodoDetail = observer(() => {
                 <span>Дата Создания: {store.currentTask?.creationDate.toUTCString()}</span>
             </div>
             <button onClick={() => setIsModalOpen(true)}>Добавить подзадачу</button>
-            {isModalOpen && createPortal(<TaskModal ctx={store.currentTask} closeModal={() => setIsModalOpen(false)}/>, document.body)}
+
+            <Modal isOpened={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <TaskCreation ctx={store.currentTask} onClose={() => setIsModalOpen(false)}/>
+            </Modal>
         </div>
     );
 });
