@@ -6,14 +6,25 @@ import {Modal} from "../../UIKit/Modal";
 import {TaskCreation} from "../TaskCreation";
 
 export const TodoList = observer(() => {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
     const store = useContext(StoreContext);
+
     return (
         <div>
+            <ListHeader/>
             {
-                store.tasks.map(task => <NestingResolver task={task} key={task.id}/>)
+                store.searchingTask.map(task => <NestingResolver task={task} key={task.id}/>)
             }
+        </div>
+    );
+});
+
+const ListHeader = () => {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const store = useContext(StoreContext);
+
+    return (
+        <div>
+            <input type="text" onChange={(e) => store.searchTasks(e.target.value)}/>
             <button onClick={() => setIsModalOpen(true)}>Добавить задачу</button>
 
             <Modal isOpened={isModalOpen} onClose={() => setIsModalOpen(false)}>
@@ -21,4 +32,4 @@ export const TodoList = observer(() => {
             </Modal>
         </div>
     );
-});
+}

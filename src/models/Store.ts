@@ -4,10 +4,12 @@ import {findTaskByID, searchTaskByTitle} from "../helpers/findTodo";
 
 export class Store {
     tasks: Array<Todo> = [];
+    searchingTask: Array<Todo> = [];
     currentTask: Todo | null = null;
 
     constructor(tasks?: Array<Todo>) {
         this.tasks = tasks!;
+        this.searchTasks('');
         makeAutoObservable(this);
     }
 
@@ -15,8 +17,8 @@ export class Store {
         this.currentTask = task;
     }
 
-    searchTasks(search: string): Array<Todo> {
-        return searchTaskByTitle(this.tasks, search);
+    searchTasks(search: string): void {
+        this.searchingTask = searchTaskByTitle(this.tasks, search);
     }
 
     getTaskByID(id: string): Todo | null {
