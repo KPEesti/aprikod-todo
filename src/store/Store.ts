@@ -1,24 +1,34 @@
 import {Todo} from "../models/Todo";
 import {makeAutoObservable} from "mobx";
 import {findTaskByID, searchTaskByTitle} from "../helpers/findTodo";
+import {getTasksFromStorage, setTasksToStorage} from "../helpers/storage";
 
 export class Store {
     tasks: Array<Todo> = [];
+    search: string = '';
     searchingTask: Array<Todo> = [];
     currentTask: Todo | null = null;
 
-    constructor(tasks?: Array<Todo>) {
-        this.tasks = tasks!;
-        this.searchTasks('');
+    constructor() {
+        let tmp = getTasksFromStorage();
+        if(tmp !== null && tmp.length !== 0) {
+            this.tasks = tmp;
+        }
+        this.searchTasks();
         makeAutoObservable(this);
+    }
+
+    setSearch(newSearch: string) {
+        this.search = newSearch;
+        this.searchTasks();
     }
 
     setCurrentTask(task: Todo): void {
         this.currentTask = task;
     }
 
-    searchTasks(search: string): void {
-        this.searchingTask = searchTaskByTitle(this.tasks, search);
+    searchTasks(): void {
+        this.searchingTask = searchTaskByTitle(this.tasks, this.search);
     }
 
     getTaskByID(id: string): Todo | null {
@@ -31,6 +41,8 @@ export class Store {
         } else {
             this.tasks.push(task);
         }
+        setTasksToStorage(this.tasks);
+        this.searchTasks();
     }
 
     deleteTask(id: string) {
@@ -39,5 +51,7 @@ export class Store {
             task.deleteSubTask(id);
             return task.id !== id;
         });
+        setTasksToStorage(this.tasks);
+        this.searchTasks();
     }
 }

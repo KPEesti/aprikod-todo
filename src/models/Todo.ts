@@ -1,7 +1,8 @@
 import {v4 as uuidv4} from 'uuid';
 import {makeAutoObservable} from "mobx";
+import {setTaskByIdToStorage} from "../helpers/storage";
 
-interface ITodo {
+export interface ITodo {
     id?: string;
     title: string;
     description: string;
@@ -17,8 +18,12 @@ export class Todo implements ITodo {
     subTasks: Array<Todo> | null;
     creationDate: Date;
 
-    constructor({title, description, subTasks, completed}: ITodo) {
-        this.id = uuidv4();
+    constructor({id, title, description, subTasks, completed}: ITodo) {
+        if(id) {
+            this.id = id;
+        } else {
+            this.id = uuidv4();
+        }
         this.title = title;
         this.description = description;
         this.completed = completed;
@@ -40,6 +45,7 @@ export class Todo implements ITodo {
         if (this.subTasks) {
             this.subTasks.forEach(task => task.changeStatus(newStatus));
         }
+        setTaskByIdToStorage(this.id, this);
     }
 
     changeTask({title, description}: { title?: string, description?: string }) {
@@ -50,14 +56,17 @@ export class Todo implements ITodo {
         if (description !== undefined) {
             this.description = description;
         }
+        setTaskByIdToStorage(this.id, this);
     }
 
     addTask(task: Todo) {
         if (!this.subTasks) {
-            this.subTasks = [task]
+            this.subTasks = [task];
+            console.log('Я здесь был')
         } else {
             this.subTasks?.push(task);
         }
+        setTaskByIdToStorage(this.id, this);
     }
 
     deleteSubTask(taskID: string): void {
@@ -67,6 +76,7 @@ export class Todo implements ITodo {
                 return task.id !== taskID;
             });
         }
+        setTaskByIdToStorage(this.id, this);
     }
 }
 

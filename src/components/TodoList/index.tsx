@@ -27,7 +27,7 @@ const ListHeader = () => {
         <>
             <div className={styles.header}>
                 <input className={styles.header__search} type="text" placeholder="Поиск..."
-                       onChange={(e) => store.searchTasks(e.target.value)}/>
+                       onChange={(e) => store.setSearch(e.target.value)}/>
                 <button className={styles.header__button} onClick={() => setIsModalOpen(true)}>Добавить задачу</button>
             </div>
 
