@@ -2,7 +2,7 @@ import React, {createContext} from 'react';
 import './App.css';
 import {Todo} from "./models/Todo";
 import {TodoList} from "./components/TodoList";
-import {Store} from "./models/Store";
+import {Store} from "./store/Store";
 import {TodoDetail} from "./components/TodoDetail";
 
 export const StoreContext = createContext<Store>(new Store([]));

@@ -1,4 +1,4 @@
-import {Todo} from "./Todo";
+import {Todo} from "../models/Todo";
 import {makeAutoObservable} from "mobx";
 import {findTaskByID, searchTaskByTitle} from "../helpers/findTodo";
 

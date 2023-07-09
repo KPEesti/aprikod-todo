@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Todo} from "../../models/Todo";
 import styles from "./taskCreation.module.scss";
-import {Store} from "../../models/Store";
+import {Store} from "../../store/Store";
 
 interface TaskCreationProps {
     ctx: Todo | Store;
