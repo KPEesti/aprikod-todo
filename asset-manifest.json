@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/aprikod-todo/static/css/main.e96c0eaa.css",
-    "main.js": "/aprikod-todo/static/js/main.dc7554b9.js",
+    "main.js": "/aprikod-todo/static/js/main.4277b625.js",
     "index.html": "/aprikod-todo/index.html",
     "main.e96c0eaa.css.map": "/aprikod-todo/static/css/main.e96c0eaa.css.map",
-    "main.dc7554b9.js.map": "/aprikod-todo/static/js/main.dc7554b9.js.map"
+    "main.4277b625.js.map": "/aprikod-todo/static/js/main.4277b625.js.map"
   },
   "entrypoints": [
     "static/css/main.e96c0eaa.css",
-    "static/js/main.dc7554b9.js"
+    "static/js/main.4277b625.js"
   ]
 }
