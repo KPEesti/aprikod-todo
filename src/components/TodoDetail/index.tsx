@@ -34,9 +34,9 @@ export const TodoDetail = observer(() => {
                     <div>
                         <button className={styles.todoDetail__button} onClick={() => setIsModalOpen(true)}>Добавить подзадачу</button>
                         <img className={styles.todoDetail__icons} onClick={() => setIsEditModalOpen(true)}
-                             src="/images/edit.svg" height="25px" alt=""/>
-                        <img className={styles.todoDetail__icons} onClick={handleDeleteTask} src="/images/trash.svg"
-                             height="25px" alt=""/>
+                             src="./images/edit.svg" height="25px" alt="edit"/>
+                        <img className={styles.todoDetail__icons} onClick={handleDeleteTask} src="./images/trash.svg"
+                             height="25px" alt="delete"/>
                     </div>
                 </div>
                 <hr className={styles.todoDetail__divider}/>

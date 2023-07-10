@@ -21,7 +21,7 @@ export const CollapseBlock = observer(({task}: CollapseBlockProps) => {
             >
                 <img className={styles.collapseBlock__arrow}
                      onClick={handleCollapse}
-                     src={!collapsed ? "/images/upArrow.svg" : "/images/downArrow.svg"} height={'20px'} alt=""/>
+                     src={!collapsed ? "./images/downArrow.svg" : "./images/downArrow.svg"} height={'20px'} alt="arrow"/>
                 <TodoItem todo={task}/>
             </div>
             {
